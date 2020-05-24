@@ -58,6 +58,7 @@ footer {
 .features {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-areas: "supervisor" "team" "karma" "calculator";
   gap: 2em;
   margin: 4em 0;
 }
@@ -71,15 +72,19 @@ footer {
 
 .feature-card:first-child {
   border-top: 4px solid var(--color-cyan);
+  grid-area: supervisor;
 }
 .feature-card:nth-child(2) {
   border-top: 4px solid var(--color-red);
+  grid-area: team;
 }
 .feature-card:nth-child(3) {
   border-top: 4px solid var(--color-orange);
+  grid-area: karma;
 }
 .feature-card:last-child {
   border-top: 4px solid var(--color-blue);
+  grid-area: calculator;
 }
 
 .feature-card__body {
@@ -88,4 +93,22 @@ footer {
 
 .feature-card__img {
   text-align: right;
+}
+
+@media (min-width: 992px) {
+  body {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "supervisor team calculator" "supervisor karma calculator";
+  }
+
+  .feature-card:first-child,
+  .feature-card:last-child {
+    align-self: center;
+  }
 }
